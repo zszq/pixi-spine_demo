@@ -18,7 +18,7 @@ function createSpine(params) {
       autoDensity: true,
       powerPreference: "high-performance"
     });
-    container.appendChild(app.view);
+    options.container.appendChild(app.view);
 
     // load spine data
     app.loader.add("pixie", options.path).load(onAssetsLoaded);
@@ -30,7 +30,7 @@ function createSpine(params) {
 
       // set the position
       pixie.position.set(app.screen.width / 2, app.screen.height / 2);
-      pixie.scale.set(0.3);
+      pixie.scale.set(0.6);
       
       // run animation
       pixie.state.setAnimation(0, "animation", true);
