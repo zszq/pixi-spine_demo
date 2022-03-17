@@ -23,9 +23,10 @@ function createSpine(params) {
     // load spine data
     app.loader.add("pixie", options.path).load(onAssetsLoaded);
 
+    let pixie = null;
     function onAssetsLoaded(loader, res) {
       // create a spine
-      const pixie = new PIXI.spine.Spine(res.pixie.spineData);
+      pixie = new PIXI.spine.Spine(res.pixie.spineData);
       app.stage.addChild(pixie);
 
       // set the position
@@ -34,6 +35,12 @@ function createSpine(params) {
       
       // run animation
       pixie.state.setAnimation(0, "animation", true);
+    }
+
+    // auto resize
+    window.onresize = () => {
+      app.resize()
+      pixie.position.set(app.screen.width / 2, app.screen.height / 2);
     }
   });
 }
